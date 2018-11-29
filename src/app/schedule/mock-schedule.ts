@@ -14,7 +14,7 @@ export const SCHEDULE: Schedule = {
           url: '#'
         },
         {
-          start: new Date(2018, 11, 12, 9),
+          start: new Date(2018, 11, 10, 9),
           end: new Date(2018, 11, 12, 12),
           name: 'work order #222',
           url: '#'

@@ -45,7 +45,12 @@ export class ScheduleComponent implements OnInit {
   }
 
   setEventWidth(event) {
-    return this.getScheduleWidth() * this.getEventDuration(event) / this.getScheduleWidth();
+    return this.getScheduleWidth() * this.getEventDuration(event) / this.getScheduleDuration();
+  }
+  
+  setEventPos(event) {
+    let startDiff = differenceInMinutes(event.start, this.schedule.start);
+    return this.getScheduleWidth() * startDiff / this.getScheduleDuration();
   }
 
 }
