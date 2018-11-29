@@ -2,6 +2,14 @@
 
 
 <table>
+  <thead>
+    <tr>
+      <td>Resource</td>
+      <td *ngFor="let date of headerDates">
+        {{date}}
+      </td>
+    </tr>
+  </thead>
   <tbody>
     <tr *ngFor="let resource of schedule.resources">
       <td>{{ resource.name }}</td>
