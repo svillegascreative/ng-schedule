@@ -2,6 +2,7 @@
 
 
 <table class="ngsc-table">
+
   <thead class="ngsc-head">
     <tr>
       <td>Resource</td>
@@ -10,10 +11,11 @@
       </td>
     </tr>
   </thead>
+
   <tbody>
     <tr *ngFor="let resource of schedule.resources">
       <td>{{ resource.name }}</td>
-      <td [attr.colspan]=headerDates.length>
+      <td [attr.colspan]=headerDates.length class="ngsc-resource-events">
         <ul class="ngsc-events-list">
           <li *ngFor="let event of resource.events" class="ngsc-event">
             <a href="{{ event.url }}">{{ event.name }}</a>
@@ -22,4 +24,5 @@
       </td>
     </tr>
   </tbody>
+
 </table>

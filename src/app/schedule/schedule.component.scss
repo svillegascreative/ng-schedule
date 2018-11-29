@@ -7,9 +7,10 @@
 .ngsc-table {
   border: 1px solid $border-color;
   border-collapse: collapse;
-  td {
-    padding: 0.5rem;
-  }
+}
+
+td {
+  padding: 0.5rem;
 }
 
 .ngsc-head {
@@ -30,6 +31,12 @@ tr td:first-of-type {
 
 // EVENTS
 // ================================
+
+.ngsc-resource-events {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 
 .ngsc-events-list {
   list-style: none;
