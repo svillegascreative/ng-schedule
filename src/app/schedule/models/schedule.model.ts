@@ -1,8 +1,7 @@
-import { Event } from './event.model';
+import { Resource } from './resource.model';
 
 export class Schedule {
   start: Date;
   end: Date;
-  resources: Array<string>;
-  events: Array<Event>;
+  resources: Resource[];
 }
