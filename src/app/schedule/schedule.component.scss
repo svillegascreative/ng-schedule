@@ -1,0 +1,50 @@
+@import '../../assets/scss/variables';
+
+
+// TABLE
+// ================================
+
+.ngsc-table {
+  border: 1px solid $border-color;
+  border-collapse: collapse;
+  td {
+    padding: 0.5rem;
+  }
+}
+
+.ngsc-head {
+  background-color: $thead-bg;
+  color: $thead-color;
+}
+
+tbody {
+  tr:nth-child(2) {
+    background-color: $row-shade;
+  }
+}
+
+tr td:first-of-type {
+  border-right: 2px solid $border-color;
+}
+
+
+// EVENTS
+// ================================
+
+.ngsc-events-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ngsc-event {
+  display: inline-block;
+  background-color: $event-bg-1;
+  border-radius: 5px;
+  padding: 0.5rem;
+
+  a {
+   color: $event-color;
+   text-decoration: none;
+  }
+}
