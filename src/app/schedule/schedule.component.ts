@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { eachDay, format } from "date-fns";
+import { differenceInMinutes, eachDay, format } from "date-fns";
 
 import { Event } from "./models/event.model";
 import { Resource } from "./models/resource.model";
@@ -30,6 +30,22 @@ export class ScheduleComponent implements OnInit {
 
   getHeaderDates() {
     return this.dates.map(date => format(date, 'MMM Do YYYY'));
+  }
+  
+  getScheduleWidth() {
+    return document.querySelector('.ngsc-resource-events').clientWidth;
+  }
+
+  getScheduleDuration() {
+    return differenceInMinutes(this.schedule.end, this.schedule.start);
+  }
+
+  getEventDuration(event) {
+    return differenceInMinutes(event.end, event.start);
+  }
+
+  setEventWidth(event) {
+    return this.getScheduleWidth() * this.getEventDuration(event) / this.getScheduleWidth();
   }
 
 }

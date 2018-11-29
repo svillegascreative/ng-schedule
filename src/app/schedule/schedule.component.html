@@ -17,7 +17,7 @@
       <td>{{ resource.name }}</td>
       <td [attr.colspan]=headerDates.length class="ngsc-resource-events">
         <ul class="ngsc-events-list">
-          <li *ngFor="let event of resource.events" class="ngsc-event">
+          <li *ngFor="let event of resource.events" class="ngsc-event" [style.width.px]="setEventWidth(event)">
             <a href="{{ event.url }}">{{ event.name }}</a>
           </li>
         </ul>
