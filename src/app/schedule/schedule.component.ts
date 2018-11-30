@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { differenceInMinutes, eachDay, format } from "date-fns";
+import { differenceInMinutes, eachDay, endOfDay, format } from "date-fns";
 
 import { Event } from "./models/event.model";
 import { Resource } from "./models/resource.model";
@@ -23,17 +23,18 @@ export class ScheduleComponent implements OnInit {
   
   ngOnInit() {
   }
-
+  
   getDates() {
     return eachDay(this.schedule.start, this.schedule.end);
   }
-
+  
   getHeaderDates() {
     return this.dates.map(date => format(date, 'MMM Do YYYY'));
   }
   
   getScheduleDuration() {
-    return differenceInMinutes(this.schedule.end, this.schedule.start);
+    let actualEnd = endOfDay(this.schedule.end)
+    return differenceInMinutes(actualEnd, this.schedule.start);
   }
 
   getEventDuration(event) {
