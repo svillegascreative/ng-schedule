@@ -7,6 +7,7 @@
 .ngsc-table {
   border: 1px solid $border-color;
   border-collapse: collapse;
+  width: 100%;
 }
 
 td {
@@ -34,6 +35,7 @@ tr td:first-of-type {
 
 .ngsc-resource-events {
   padding: 0;
+  overflow: hidden;
 }
 
 

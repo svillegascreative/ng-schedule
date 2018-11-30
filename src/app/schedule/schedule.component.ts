@@ -40,19 +40,26 @@ export class ScheduleComponent implements OnInit {
   getEventDuration(event) {
     return differenceInMinutes(event.end, event.start);
   }
-
+  
+  getEventStartOffset(event) {
+    return differenceInMinutes(event.start, this.schedule.start);
+  }
+  
+  setEventPos(event) {
+    // we want event margin as percent of schedule width
+    return this.getEventStartOffset(event) / this.getScheduleDuration() *100;
+  }
+  
   setEventWidth(event) {
     // we want event width as percent of schedule width
     return this.getEventDuration(event) / this.getScheduleDuration() *100;
   }
   
-  getEventStartOffset(event) {
-    return differenceInMinutes(event.start, this.schedule.start);
-  }
-
-  setEventPos(event) {
-    // we want event margin as percent of schedule width
-    return this.getEventStartOffset(event) / this.getScheduleDuration() *100;
+  alignEventText(event) {
+    let offset = this.getEventStartOffset(event);
+    if ( offset < 0 ) {
+      return offset / this.getScheduleDuration() * 100 * -1;
+    } 
   }
 
 }

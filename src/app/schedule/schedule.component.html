@@ -17,8 +17,15 @@
       <td>{{ resource.name }}</td>
       <td [attr.colspan]=headerDates.length class="ngsc-resource-events">
         <ul class="ngsc-events-list">
-          <li *ngFor="let event of resource.events" class="ngsc-event" [style.width.%]="setEventWidth(event)" [style.marginLeft.%]="setEventPos(event)">
-            <a href="{{ event.url }}" title="{{ event.name }}: {{ event.start}} - {{ event.end }}">{{ event.name }}</a>
+          <li *ngFor="let event of resource.events" 
+            class="ngsc-event" 
+            [style.width.%]="setEventWidth(event)" 
+            [style.marginLeft.%]="setEventPos(event)">
+            <a href="{{ event.url }}" 
+              [style.marginLeft.%]="alignEventText(event)" 
+              title="{{ event.name }}: {{ event.start}} - {{ event.end }}">
+              {{ event.name }}
+            </a>
           </li>
         </ul>
       </td>
