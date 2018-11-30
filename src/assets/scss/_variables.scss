@@ -15,3 +15,9 @@ $event-color: #fff;
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 $basefont-family: 'Montserrat', sans-serif;
+
+
+// spacing
+$base-space: 0.5rem;
+$half-space: $base-space / 2;
+$small-space: $base-space / 4;

@@ -10,7 +10,7 @@
 }
 
 td {
-  padding: 0.5rem;
+  padding: $base-space;
 }
 
 .ngsc-head {
@@ -33,14 +33,13 @@ tr td:first-of-type {
 // ================================
 
 .ngsc-resource-events {
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
 }
 
 
 .ngsc-events-list {
   list-style: none;
-  margin: 0;
+  margin: $base-space 0;
   padding: 0;
   top: 0;
   bottom: 0;
@@ -49,16 +48,18 @@ tr td:first-of-type {
 }
 
 .ngsc-event {
-  top: 0;
   background-color: $event-bg-1;
   border-radius: 5px;
-  padding: 0.5rem;
+  margin: $half-space 0;
+  padding: $half-space 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: $event-color;
 
   a {
+    margin: $base-space;
+    font-size: 0.8rem;
     color: $event-color;
     text-decoration: none;
   }
