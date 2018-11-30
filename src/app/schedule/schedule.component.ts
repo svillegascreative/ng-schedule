@@ -32,10 +32,6 @@ export class ScheduleComponent implements OnInit {
     return this.dates.map(date => format(date, 'MMM Do YYYY'));
   }
   
-  getScheduleWidth() {
-    return document.querySelector('.ngsc-resource-events').clientWidth;
-  }
-
   getScheduleDuration() {
     return differenceInMinutes(this.schedule.end, this.schedule.start);
   }
@@ -45,12 +41,17 @@ export class ScheduleComponent implements OnInit {
   }
 
   setEventWidth(event) {
-    return this.getScheduleWidth() * this.getEventDuration(event) / this.getScheduleDuration();
+    // we want event width as percent of schedule width
+    return this.getEventDuration(event) / this.getScheduleDuration() *100;
   }
   
+  getEventStartOffset(event) {
+    return differenceInMinutes(event.start, this.schedule.start);
+  }
+
   setEventPos(event) {
-    let startDiff = differenceInMinutes(event.start, this.schedule.start);
-    return this.getScheduleWidth() * startDiff / this.getScheduleDuration();
+    // we want event margin as percent of schedule width
+    return this.getEventStartOffset(event) / this.getScheduleDuration() *100;
   }
 
 }
