@@ -44,6 +44,10 @@
                 {{ event.name }}
               </a>
             </li>
+            <li *ngIf="resource.events.length == 0"
+              class="ngsc-noevents">
+              Nothing scheduled in this period
+            </li>
           </ul>
 
         </td>
