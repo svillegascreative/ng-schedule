@@ -9,36 +9,46 @@
 </form>
 
 
+<div class="ngsc-table-wrapper">
+  <table class="ngsc-table">
+  
+    <thead class="ngsc-head">
+      <tr>
+        <th class="ngsc-fixed-col corner-cell">
+          Resource
+        </th>
+        <th *ngFor="let date of headerDates">
+          {{date}}
+        </th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <!-- A row for each resource -->
+      <tr *ngFor="let resource of schedule.resources">
+        <th class="ngsc-fixed-col">
+          {{ resource.name }}
+        </th>
+        <td [attr.colspan]=headerDates.length 
+          class="ngsc-resource-events">
 
-<table class="ngsc-table">
+          <!-- A list of events for this resource -->
+          <ul class="ngsc-events-list">
+            <li *ngFor="let event of resource.events" 
+              class="ngsc-event" 
+              [style.width.%]="setEventWidth(event)" 
+              [style.marginLeft.%]="setEventPos(event)">
+              <a href="{{ event.url }}" 
+                [style.marginLeft.%]="alignEventText(event)" 
+                title="{{ event.name }}: {{ event.start}} - {{ event.end }}">
+                {{ event.name }}
+              </a>
+            </li>
+          </ul>
 
-  <thead class="ngsc-head">
-    <tr>
-      <td>Resource</td>
-      <td *ngFor="let date of headerDates">
-        {{date}}
-      </td>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let resource of schedule.resources">
-      <td>{{ resource.name }}</td>
-      <td [attr.colspan]=headerDates.length class="ngsc-resource-events">
-        <ul class="ngsc-events-list">
-          <li *ngFor="let event of resource.events" 
-            class="ngsc-event" 
-            [style.width.%]="setEventWidth(event)" 
-            [style.marginLeft.%]="setEventPos(event)">
-            <a href="{{ event.url }}" 
-              [style.marginLeft.%]="alignEventText(event)" 
-              title="{{ event.name }}: {{ event.start}} - {{ event.end }}">
-              {{ event.name }}
-            </a>
-          </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-
-</table>
+        </td>
+      </tr>
+    </tbody>
+  
+  </table>
+</div>

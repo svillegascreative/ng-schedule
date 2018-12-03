@@ -4,13 +4,17 @@
 // TABLE
 // ================================
 
+.ngsc-table-wrapper {
+  overflow: scroll;
+  margin-left: 100px;
+}
+
 .ngsc-table {
-  border: 1px solid $border-color;
   border-collapse: collapse;
   width: 100%;
 }
 
-td {
+td, th {
   padding: $base-space;
 }
 
@@ -19,15 +23,21 @@ td {
   color: $thead-color;
 }
 
+.ngsc-fixed-col {
+  position: absolute;
+  left: 0;
+  width: 100px;
+}
+
 tbody {
   tr:nth-child(2) {
     background-color: $row-shade;
   }
 }
 
-tr td:first-of-type {
-  border-right: 2px solid $border-color;
-}
+// tr td:first-of-type {
+//   border-right: 2px solid $border-color;
+// }
 
 
 // EVENTS
@@ -43,10 +53,6 @@ tr td:first-of-type {
   list-style: none;
   margin: $base-space 0;
   padding: 0;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
 }
 
 .ngsc-event {
