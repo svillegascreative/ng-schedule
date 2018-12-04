@@ -4,9 +4,14 @@
 // TABLE
 // ================================
 
+.ngsc-table-scroll {
+  position:relative;
+  overflow: hidden;
+  border: 2px solid $border-color;
+}
+
 .ngsc-table-wrapper {
-  overflow: scroll;
-  margin-left: 100px;
+  overflow: auto;
 }
 
 .ngsc-table {
@@ -23,21 +28,34 @@ td, th {
   color: $thead-color;
 }
 
-.ngsc-fixed-col {
-  position: absolute;
-  left: 0;
-  width: 100px;
-}
 
 tbody {
-  tr:nth-child(2) {
+  background-color: #fff;
+  tr:nth-child(even) {
     background-color: $row-shade;
   }
 }
 
-// tr td:first-of-type {
-//   border-right: 2px solid $border-color;
-// }
+.cloned-col {
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  & th,
+  & td {
+    visibility: hidden;
+  }
+
+  .ngsc-fixed-col {
+    border-right: 2px solid $border-color;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    text-align: left;
+    visibility: visible;
+  }
+}
+
 
 
 // EVENTS

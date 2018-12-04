@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 
 import { addDays, differenceInMinutes, eachDay, endOfDay, format, startOfDay, startOfToday } from "date-fns";
 
@@ -13,7 +13,7 @@ import { SCHEDULE } from "./mock-schedule";
   styleUrls: ['./schedule.component.scss']
 })
 
-export class ScheduleComponent implements OnInit {
+export class ScheduleComponent implements AfterViewInit {
 
   schedule: Schedule = SCHEDULE;
   // displayDays: number = 2;
@@ -24,7 +24,9 @@ export class ScheduleComponent implements OnInit {
 
   constructor() { }
   
-  ngOnInit() {
+  ngAfterViewInit() {
+    const layer = document.querySelector('.ngsc-table').cloneNode(true);
+    document.querySelector('.ngsc-table-scroll').appendChild(layer).classList.add('cloned-col');
   }
   
   getDates() {    
