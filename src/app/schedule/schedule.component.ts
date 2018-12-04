@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { addDays, differenceInMinutes, eachDay, endOfDay, format, startOfToday } from "date-fns";
+import { addDays, differenceInMinutes, eachDay, endOfDay, format, startOfDay, startOfToday } from "date-fns";
 
 import { Event } from "./models/event.model";
 import { Resource } from "./models/resource.model";
@@ -16,18 +16,19 @@ import { SCHEDULE } from "./mock-schedule";
 export class ScheduleComponent implements OnInit {
 
   schedule: Schedule = SCHEDULE;
-  displayStart: Date = startOfToday();
-  displayEnd: Date = addDays(this.displayStart, 2);
+  // displayDays: number = 2;
+  // displayStart: Date = startOfToday();
+  // displayEnd: Date = addDays(this.displayStart, this.displayDays);
   dates: Date[] = this.getDates();
   headerDates: string[] = this.getHeaderDates();
-  
+
   constructor() { }
   
   ngOnInit() {
   }
   
   getDates() {    
-    return eachDay(this.displayStart, this.displayEnd);
+    return eachDay(this.schedule.start, this.schedule.end);
   }
   
   getHeaderDates() {
@@ -35,8 +36,8 @@ export class ScheduleComponent implements OnInit {
   }
   
   getScheduleDuration() {
-    let actualEnd = endOfDay(this.displayEnd)
-    return differenceInMinutes(actualEnd, this.displayStart);
+    let actualEnd = endOfDay(this.schedule.end)
+    return differenceInMinutes(actualEnd, this.schedule.start);
   }
 
   getEventDuration(event) {
@@ -44,7 +45,7 @@ export class ScheduleComponent implements OnInit {
   }
   
   getEventStartOffset(event) {
-    return differenceInMinutes(event.start, this.displayStart);
+    return differenceInMinutes(event.start, this.schedule.start);
   }
   
   setEventPos(event) {
