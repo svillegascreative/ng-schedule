@@ -1,10 +1,9 @@
 <h2>Schedule component</h2>
 
 <form>
-  <select>
-    <option value="0">1 Day View</option>
-    <option value="2">3 Day View</option>
-    <option value="6">7 Day View</option>
+  <select (change)="setDayWidth($event.target.value)">
+    <option value="1">1 Day View</option>
+    <option value="3" selected>3 Day View</option>
   </select>
 </form>
 
