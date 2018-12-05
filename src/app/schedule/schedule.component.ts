@@ -16,17 +16,15 @@ import { SCHEDULE } from "./mock-schedule";
 export class ScheduleComponent implements AfterViewInit {
 
   schedule: Schedule = SCHEDULE;
-  // displayDays: number = 2;
-  // displayStart: Date = startOfToday();
-  // displayEnd: Date = addDays(this.displayStart, this.displayDays);
   dates: Date[] = this.getDates();
   headerDates: string[] = this.getHeaderDates();
+  dayWidth: string;
 
   constructor() { }
   
   ngAfterViewInit() {
-    const layer = document.querySelector('.ngsc-table').cloneNode(true);
-    document.querySelector('.ngsc-table-scroll').appendChild(layer).classList.add('cloned-col');
+    this.setDayWidth();
+    this.fixFirstColumn();
   }
   
   getDates() {    
@@ -65,6 +63,17 @@ export class ScheduleComponent implements AfterViewInit {
     if ( offset < 0 ) {
       return offset / this.getScheduleDuration() * 100 * -1;
     } 
+  }
+
+  setDayWidth() {
+    let boxWidth = document.querySelector('.ngsc-table-scroll').clientWidth;
+    let colWidth = document.querySelector('.ngsc-fixed-col').clientWidth;
+    this.dayWidth = `${boxWidth - colWidth}px`;
+  }
+  
+  fixFirstColumn() {
+    let layer: any = document.querySelector('.ngsc-table').cloneNode(true);
+    <any>document.querySelector('.ngsc-table-scroll').appendChild(layer).classList.add('cloned-col');
   }
 
 }
