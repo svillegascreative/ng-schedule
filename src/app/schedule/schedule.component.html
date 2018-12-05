@@ -17,8 +17,9 @@
           <th class="ngsc-fixed-col corner-cell">
             Resource
           </th>
-          <th *ngFor="let date of headerDates">
-            <div class="ngsc-date-cell"
+          <th *ngFor="let date of headerDates"
+            class="ngsc-date-cell">
+            <div class="ngsc-date"
             [style.width]="dayWidth">
               {{date}}
             </div>

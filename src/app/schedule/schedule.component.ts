@@ -19,11 +19,12 @@ export class ScheduleComponent implements AfterViewInit {
   dates: Date[] = this.getDates();
   headerDates: string[] = this.getHeaderDates();
   dayWidth: string;
+  daysView: number = 3;
 
   constructor() { }
   
   ngAfterViewInit() {
-    this.setDayWidth();
+    this.setDayWidth(this.daysView);
     this.fixFirstColumn();
   }
   
@@ -65,10 +66,10 @@ export class ScheduleComponent implements AfterViewInit {
     } 
   }
 
-  setDayWidth() {
+  setDayWidth(days) {
     let boxWidth = document.querySelector('.ngsc-table-scroll').clientWidth;
     let colWidth = document.querySelector('.ngsc-fixed-col').clientWidth;
-    this.dayWidth = `${boxWidth - colWidth}px`;
+    this.dayWidth = `${(boxWidth - colWidth) / days }px`;
   }
   
   fixFirstColumn() {

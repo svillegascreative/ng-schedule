@@ -17,18 +17,23 @@
 .ngsc-table {
   border-collapse: collapse;
   width: 100%;
-}
 
-td, th {
-  padding: $base-space;
+  td, th {
+    padding: $base-space;
+  }
 }
 
 .ngsc-head {
   background-color: $thead-bg;
   color: $thead-color;
+
+  .ngsc-date-cell {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
-.ngsc-date-cell {
+.ngsc-date {
   height: 1em;
   min-width: 4em;
   overflow: hidden;
