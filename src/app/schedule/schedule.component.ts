@@ -34,7 +34,7 @@ export class ScheduleComponent implements AfterViewInit {
   }
   
   getHeaderDates() {
-    return this.dates.map(date => format(date, 'MMM Do YYYY'));
+    return this.dates.map(date => format(date, 'MMM. D YYYY'));
   }
   
   getScheduleDuration() {

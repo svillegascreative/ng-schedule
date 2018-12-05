@@ -18,7 +18,10 @@
             Resource
           </th>
           <th *ngFor="let date of headerDates">
-            {{date}}
+            <div class="ngsc-date-cell"
+            [style.width]="dayWidth">
+              {{date}}
+            </div>
           </th>
         </tr>
       </thead>

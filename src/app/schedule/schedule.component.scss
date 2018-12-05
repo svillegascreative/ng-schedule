@@ -28,6 +28,12 @@ td, th {
   color: $thead-color;
 }
 
+.ngsc-date-cell {
+  height: 1em;
+  min-width: 4em;
+  overflow: hidden;
+}
+
 
 tbody {
   background-color: #fff;
