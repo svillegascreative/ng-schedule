@@ -2,17 +2,21 @@
 
 <form>
   <div>
-    <select (change)="setDisplayDays($event.target.value)">
-      <option value="1">1 Day View</option>
-      <option value="3" selected>3 Day View</option>
-    </select>
-  </div>
-  <div>
-    <input type="date" (change)="setScheduleStart($event.target.value)"> 
+    <label for="">Date range:</label>
+    <input type="date"> 
     to 
-    <input type="date" (change)="setScheduleEnd($event.target.value)">
+    <input type="date">
   </div>
+
+  <input type="submit" value="Filter">
 </form>
+
+<div>
+  <select (change)="setDisplayDays($event.target.value)">
+    <option value="1">1 Day View</option>
+    <option value="3" selected>3 Day View</option>
+  </select>
+</div>
 
 <app-schedule-display 
   [schedule]="schedule"
