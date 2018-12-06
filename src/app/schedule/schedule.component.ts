@@ -1,9 +1,7 @@
-import { Component, AfterViewInit} from '@angular/core';
+import { Component} from '@angular/core';
 
-import { addDays, differenceInMinutes, eachDay, endOfDay, format, startOfDay, startOfToday } from "date-fns";
 
 import { Schedule } from "./models/schedule.model";
-import { ScheduleDisplayComponent } from './schedule-display/schedule-display.component';
 import { SCHEDULE } from "./mock-schedule";
 
 @Component({
@@ -12,18 +10,15 @@ import { SCHEDULE } from "./mock-schedule";
   styleUrls: ['./schedule.component.scss']
 })
 
-export class ScheduleComponent implements AfterViewInit {
+export class ScheduleComponent {
 
-  schedule: Schedule = SCHEDULE;
+  schedule: Schedule;
   displayDays: number = 3;
 
   constructor() {
-    // this.getSchedule();    
+    this.getSchedule();    
   }
   
-  ngAfterViewInit() {
-  }
-
   getSchedule() {
     // This will later fetch from API
     return this.schedule = SCHEDULE;

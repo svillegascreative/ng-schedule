@@ -13,17 +13,11 @@ import { Schedule } from '../models/schedule.model';
 export class ScheduleDisplayComponent implements AfterViewInit {
   
   @Input() schedule: Schedule;
-  @Input() displayDays: number;
-  
-  // dates: Date[] = this.getDates();
-  // headerDates: string[] = this.getHeaderDates();
-  // dayWidth: string;
-  
+  @Input() displayDays: number;  
   
   constructor() { }
 
   ngAfterViewInit() {
-    // this.setDayWidth(this.daysView);
     this.fixFirstColumn();
   }
 
