@@ -1,10 +1,9 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit} from '@angular/core';
 
 import { addDays, differenceInMinutes, eachDay, endOfDay, format, startOfDay, startOfToday } from "date-fns";
 
-import { Event } from "./models/event.model";
-import { Resource } from "./models/resource.model";
 import { Schedule } from "./models/schedule.model";
+import { ScheduleDisplayComponent } from './schedule-display/schedule-display.component';
 import { SCHEDULE } from "./mock-schedule";
 
 @Component({
@@ -16,65 +15,30 @@ import { SCHEDULE } from "./mock-schedule";
 export class ScheduleComponent implements AfterViewInit {
 
   schedule: Schedule = SCHEDULE;
-  dates: Date[] = this.getDates();
-  headerDates: string[] = this.getHeaderDates();
-  dayWidth: string;
-  daysView: number = 3;
+  displayDays: number = 3;
 
-  constructor() { }
+  constructor() {
+    // this.getSchedule();    
+  }
   
   ngAfterViewInit() {
-    this.setDayWidth(this.daysView);
-    this.fixFirstColumn();
-  }
-  
-  getDates() {    
-    return eachDay(this.schedule.start, this.schedule.end);
-  }
-  
-  getHeaderDates() {
-    return this.dates.map(date => format(date, 'MMM. D YYYY'));
-  }
-  
-  getScheduleDuration() {
-    let actualEnd = endOfDay(this.schedule.end)
-    return differenceInMinutes(actualEnd, this.schedule.start);
   }
 
-  getEventDuration(event) {
-    return differenceInMinutes(event.end, event.start);
-  }
-  
-  getEventStartOffset(event) {
-    return differenceInMinutes(event.start, this.schedule.start);
-  }
-  
-  setEventPos(event) {
-    // we want event margin as percent of schedule width
-    return this.getEventStartOffset(event) / this.getScheduleDuration() *100;
-  }
-  
-  setEventWidth(event) {
-    // we want event width as percent of schedule width
-    return this.getEventDuration(event) / this.getScheduleDuration() *100;
-  }
-  
-  alignEventText(event) {
-    let offset = this.getEventStartOffset(event);
-    if ( offset < 0 ) {
-      return offset / this.getScheduleDuration() * 100 * -1;
-    } 
+  getSchedule() {
+    // This will later fetch from API
+    return this.schedule = SCHEDULE;
   }
 
-  setDayWidth(days) {
-    let boxWidth = document.querySelector('.ngsc-table-scroll').clientWidth;
-    let colWidth = document.querySelector('.ngsc-fixed-col').clientWidth;
-    this.dayWidth = `${(boxWidth - colWidth) / days }px`;
+  setScheduleStart(date) {
+    this.schedule.start = date;    
   }
   
-  fixFirstColumn() {
-    let layer: any = document.querySelector('.ngsc-table').cloneNode(true);
-    <any>document.querySelector('.ngsc-table-scroll').appendChild(layer).classList.add('cloned-col');
+  setScheduleEnd(date) {
+    this.schedule.end = date;
+  }
+
+  setDisplayDays(days) {
+    this.displayDays = days;
   }
 
 }

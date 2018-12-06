@@ -1,0 +1,109 @@
+@import '../../../assets/scss/variables';
+
+// TABLE
+// ================================
+
+.ngsc-table-scroll {
+  position:relative;
+  overflow: hidden;
+  border: 2px solid $border-color;
+}
+
+.ngsc-table-wrapper {
+  overflow: auto;
+}
+
+.ngsc-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  td, th {
+    padding: $base-space;
+  }
+}
+
+.ngsc-head {
+  background-color: $thead-bg;
+  color: $thead-color;
+
+  .ngsc-date-cell {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.ngsc-date {
+  height: 1em;
+  min-width: 4em;
+  overflow: hidden;
+}
+
+
+tbody {
+  background-color: #fff;
+  tr:nth-child(even) {
+    background-color: $row-shade;
+  }
+}
+
+.cloned-col {
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  & th,
+  & td {
+    visibility: hidden;
+  }
+
+  .ngsc-fixed-col {
+    border-right: 2px solid $border-color;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    text-align: left;
+    visibility: visible;
+  }
+}
+
+
+
+// EVENTS
+// ================================
+
+.ngsc-resource-events {
+  padding: 0;
+  overflow: hidden;
+}
+
+
+.ngsc-events-list {
+  list-style: none;
+  margin: $base-space 0;
+  padding: 0;
+}
+
+.ngsc-event {
+  background-color: $event-bg-1;
+  border-radius: 5px;
+  margin: $half-space 0;
+  padding: $half-space 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: $event-color;
+
+  a {
+    margin: $base-space;
+    font-size: 0.8rem;
+    color: $event-color;
+    text-decoration: none;
+  }
+}
+
+.ngsc-noevents {
+  margin: $base-space;
+  font-size: 0.8em;
+  color: #555;
+  font-style: italic; 
+}

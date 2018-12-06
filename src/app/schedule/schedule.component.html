@@ -1,62 +1,20 @@
 <h2>Schedule component</h2>
 
 <form>
-  <select (change)="setDayWidth($event.target.value)">
-    <option value="1">1 Day View</option>
-    <option value="3" selected>3 Day View</option>
-  </select>
+  <div>
+    <select (change)="setDisplayDays($event.target.value)">
+      <option value="1">1 Day View</option>
+      <option value="3" selected>3 Day View</option>
+    </select>
+  </div>
+  <div>
+    <input type="date" (change)="setScheduleStart($event.target.value)"> 
+    to 
+    <input type="date" (change)="setScheduleEnd($event.target.value)">
+  </div>
 </form>
 
-<div class="ngsc-table-scroll">
-  <div class="ngsc-table-wrapper">
-    <table class="ngsc-table">
-    
-      <thead class="ngsc-head">
-        <tr>
-          <th class="ngsc-fixed-col corner-cell">
-            Resource
-          </th>
-          <th *ngFor="let date of headerDates"
-            class="ngsc-date-cell">
-            <div class="ngsc-date"
-            [style.width]="dayWidth">
-              {{date}}
-            </div>
-          </th>
-        </tr>
-      </thead>
-    
-      <tbody>
-        <!-- A row for each resource -->
-        <tr *ngFor="let resource of schedule.resources">
-          <th class="ngsc-fixed-col">
-            {{ resource.name }}
-          </th>
-          <td [attr.colspan]=headerDates.length 
-            class="ngsc-resource-events">
-  
-            <!-- A list of events for this resource -->
-            <ul class="ngsc-events-list">
-              <li *ngFor="let event of resource.events" 
-                class="ngsc-event" 
-                [style.width.%]="setEventWidth(event)" 
-                [style.marginLeft.%]="setEventPos(event)">
-                <a href="{{ event.url }}" 
-                  [style.marginLeft.%]="alignEventText(event)" 
-                  title="{{ event.name }}: {{ event.start}} - {{ event.end }}">
-                  {{ event.name }}
-                </a>
-              </li>
-              <li *ngIf="resource.events.length == 0"
-                class="ngsc-noevents">
-                Nothing scheduled in this period
-              </li>
-            </ul>
-  
-          </td>
-        </tr>
-      </tbody>
-    
-    </table>
-  </div>
-</div>
+<app-schedule-display 
+  [schedule]="schedule"
+  [displayDays]="displayDays">
+</app-schedule-display>

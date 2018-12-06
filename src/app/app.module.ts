@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { ScheduleDisplayComponent } from './schedule/schedule-display/schedule-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    ScheduleDisplayComponent
   ],
   imports: [
     BrowserModule
