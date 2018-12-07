@@ -1,11 +1,11 @@
 <h2>Schedule component</h2>
 
-<form>
+<form [formGroup]="scheduleFilters" (ngSubmit)="updateSchedule()">
   <div>
     <label for="">Date range:</label>
-    <input type="date"> 
+    <input type="date" formControlName="startDate" value="{{formatForDateInput(schedule.start)}}"> 
     to 
-    <input type="date">
+    <input type="date" formControlName="endDate" value="{{formatForDateInput(schedule.end)}}">
   </div>
 
   <input type="submit" value="Filter">

@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
+import { FormGroup, FormControl } from "@angular/forms";
 
-import { addDays, startOfToday } from "date-fns";
+import { addDays, format, startOfToday } from "date-fns";
 
 import { Schedule } from "../models/schedule.model";
 import { SCHEDULE } from "../mock-schedule";
@@ -15,9 +16,16 @@ export class ScheduleComponent {
 
   schedule: Schedule;
   displayDays: number = 3;
+  defaultStart = startOfToday();
+  defaultEnd = addDays(startOfToday(), 13)
+
+  scheduleFilters = new FormGroup({
+    startDate: new FormControl(),
+    endDate: new FormControl()
+  });
 
   constructor() {
-    this.getSchedule(startOfToday(), addDays(startOfToday(), 13));    
+    this.getSchedule(this.defaultStart, this.defaultEnd);    
   }
   
   getSchedule(start: Date, end: Date) {
@@ -27,14 +35,22 @@ export class ScheduleComponent {
     this.schedule.start = start;
     this.schedule.end = end;
   }
-
-  // setScheduleStart(date) {
-  //   this.schedule.start = date;    
-  // }
   
-  // setScheduleEnd(date) {
-  //   this.schedule.end = date;
-  // }
+  formatForDateInput(date: Date) {
+    // required for native HTML date input; may not be needed for other datepickers
+    return format(date, 'YYYY-MM-DD');
+  }
+  
+  getDateFromInput(date: string) {
+    // required for native HTML date input; may not be needed for other datepickers
+    return new Date(date);
+  }
+
+  updateSchedule() {
+    // TODO: correct for timezone errors;    
+    this.schedule.start = this.getDateFromInput(this.scheduleFilters.value.startDate)
+    this.schedule.end = this.getDateFromInput(this.scheduleFilters.value.endDate);
+  }
 
   setDisplayDays(days) {
     this.displayDays = days;
