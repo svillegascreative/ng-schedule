@@ -1,8 +1,8 @@
 import { Component} from '@angular/core';
 
 
-import { Schedule } from "./models/schedule.model";
-import { SCHEDULE } from "./mock-schedule";
+import { Schedule } from "../models/schedule.model";
+import { SCHEDULE } from "../mock-schedule";
 
 @Component({
   selector: 'app-schedule',

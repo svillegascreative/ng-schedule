@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ScheduleComponent } from './schedule/schedule.component';
+import { ScheduleComponent } from './schedule/schedule-container/schedule.component';
 import { ScheduleDisplayComponent } from './schedule/schedule-display/schedule-display.component';
 
 @NgModule({
